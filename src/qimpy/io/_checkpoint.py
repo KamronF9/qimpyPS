@@ -38,7 +38,7 @@ class Checkpoint(h5py.File):
             filename_open = filename  # Directly open the target filename,
             self.filename_move = ""  # and don't move at the end
         mode = "w" if writable else "r"  # don't allow r+, a etc. for safety
-        super().__init__(filename_open, mode, driver="mpio", comm=rc.comm)
+        super().__init__(filename_open, mode)
         mode_name = "writing:" if writable else "reading"
         log.info(f"\nOpened checkpoint file '{filename_open}' for {mode_name}")
 
